@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PharmStock</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <h1>Welcome to PharmStock</h1>
+    
+    <!-- search bar form-->
+     <form action="/search" method="GET">
+        <input type="text" name="query" placeholder="Search For Drug" required />
+        <button type="submit">Search</button>
+     </form>
+
+     <!-- display search results-->
+      <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Drug Name</th>
+                    <th>Stock</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+           <tbody>
+            <tr th:each="drug : ${drugs}"> 
+                <td th:text="${drug.name}">Drug Name</td> 
+                <td th:text="${drug.stock}">Stock</td> 
+                <td th:text="${drug.location}">Location</td>
+            </tr>
+           </tbody>
+        </table>
+      </div>
+</body>
+</html>
